@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>NEUROSURGERY SIMULATOR — Advanced Brain Anatomy</title>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ================= HEADER ================= -->
+
+    <header class="header">
+
+        <div class="logo-container">
+
+            <div class="logo-icon">
+                <i class="fa-solid fa-brain"></i>
+            </div>
+
+            <div>
+                <div class="logo-title">
+                    NEUROSURGERY SIMULATOR
+                </div>
+
+                <div class="logo-subtitle">
+                    Advanced Brain Anatomy & Surgical Education
+                </div>
+            </div>
+
+        </div>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#monitor">Monitor</a>
+            <a href="#simulation">Simulation</a>
+            <a href="#anatomy">Anatomy</a>
+        </nav>
+
+    </header>
+
+
+    <!-- ================= HERO ================= -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="brain-icon">
+                🧠
+            </div>
+
+            <div class="badge">
+                ADVANCED NEUROSURGICAL EDUCATION
+            </div>
+
+            <h1>
+                NEUROSURGERY
+                <span>SIMULATOR</span>
+            </h1>
+
+            <p>
+                Explore brain anatomy, patient monitoring,
+                surgical procedures and neurosurgical concepts
+                through an interactive educational simulation.
+            </p>
+
+            <button class="primary-button" onclick="startSimulator()">
+                <i class="fa-solid fa-play"></i>
+                Launch Simulator
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PATIENT ================= -->
+
+    <section id="monitor" class="section">
+
+        <div class="section-title">
+
+            <span>01 — PATIENT</span>
+
+            <h2>
+                Patient Monitoring
+            </h2>
+
+            <p>
+                Simulated physiological monitoring during the procedure.
+            </p>
+
+        </div>
+
+
+        <div class="patient-grid">
+
+            <div class="patient-card">
+
+                <div class="card-header">
+
+                    <i class="fa-solid fa-user-injured"></i>
+
+                    <h3>
+                        Patient Information
+                    </h3>
+
+                </div>
+
+                <div class="patient-info">
+
+                    <div>
+                        <label>Patient</label>
+                        <strong id="patientName">
+                            Patient #402
+                        </strong>
+                    </div>
+
+                    <div>
+                        <label>Condition</label>
+                        <strong id="condition">
+                            Left Temporal Lobe Glioma
+                        </strong>
+                    </div>
+
+                    <div>
+                        <label>Status</label>
+                        <strong id="status">
+                            PRE-OP PREPARATION
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- VITALS -->
+
+            <div class="vitals-card">
+
+                <div class="card-header">
+
+                    <i class="fa-solid fa-heart-pulse"></i>
+
+                    <h3>
+                        Vital Signs
+                    </h3>
+
+                </div>
+
+                <div class="vitals-grid">
+
+                    <div class="vital">
+                        <span>ICP</span>
+                        <strong id="icp">12.0</strong>
+                        <small>mmHg</small>
+                    </div>
+
+                    <div class="vital">
+                        <span>HEART RATE</span>
+                        <strong id="heartRate">75</strong>
+                        <small>bpm</small>
+                    </div>
+
+                    <div class="vital">
+                        <span>MAP</span>
+                        <strong id="map">85</strong>
+                        <small>mmHg</small>
+                    </div>
+
+                    <div class="vital">
+                        <span>PRECISION</span>
+                        <strong id="precision">100</strong>
+                        <small>%</small>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SURGERY ================= -->
+
+    <section id="simulation" class="section simulation-section">
+
+        <div class="section-title">
+
+            <span>02 — SIMULATION</span>
+
+            <h2>
+                Neurosurgical Procedure
+            </h2>
+
+            <p>
+                Educational simulation of a simplified neurosurgical workflow.
+            </p>
+
+        </div>
+
+
+        <div class="simulation-container">
+
+            <div class="procedure-list">
+
+                <div class="procedure active" id="procedure1">
+
+                    <span>01</span>
+
+                    <div>
+                        <strong>Craniotomy</strong>
+                        <small>
+                            Surgical access simulation
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="procedure" id="procedure2">
+
+                    <span>02</span>
+
+                    <div>
+                        <strong>Tumor Resection</strong>
+                        <small>
+                            Microsurgical simulation
+                        </small>
+                    </div>
+
+                </div>
+
+
+                <div class="procedure" id="procedure3">
+
+                    <span>03</span>
+
+                    <div>
+                        <strong>Closure</strong>
+                        <small>
+                            Surgical closure simulation
+                        </small>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="operation-panel">
+
+                <div class="operation-header">
+
+                    <div>
+                        <span>OPERATING ROOM</span>
+
+                        <h3 id="operationTitle">
+                            Ready for Surgery
+                        </h3>
+                    </div>
+
+                    <div class="status-light">
+                        <span></span>
+                        SIMULATION
+                    </div>
+
+                </div>
+
+
+                <div id="operationOutput" class="operation-output">
+
+                    <div class="empty-operation">
+
+                        <i class="fa-solid fa-brain"></i>
+
+                        <h3>
+                            Neurosurgery Simulation
+                        </h3>
+
+                        <p>
+                            Press the button below to begin.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <button
+                    id="startSurgeryButton"
+                    class="surgery-button"
+                    onclick="runSimulation()"
+                >
+
+                    <i class="fa-solid fa-scalpel"></i>
+
+                    Start Surgery Simulation
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ANATOMY ================= -->
+
+    <section id="anatomy" class="section">
+
+        <div class="section-title">
+
+            <span>03 — ANATOMY</span>
+
+            <h2>
+                Brain Anatomy Explorer
+            </h2>
+
+            <p>
+                Select a brain region to explore basic educational information.
+            </p>
+
+        </div>
+
+
+        <div class="anatomy-grid">
+
+            <button onclick="showAnatomy('cerebrum')">
+                <i class="fa-solid fa-brain"></i>
+                Cerebrum
+            </button>
+
+            <button onclick="showAnatomy('cerebellum')">
+                <i class="fa-solid fa-circle-nodes"></i>
+                Cerebellum
+            </button>
+
+            <button onclick="showAnatomy('brainstem')">
+                <i class="fa-solid fa-bolt"></i>
+                Brainstem
+            </button>
+
+            <button onclick="showAnatomy('temporal')">
+                <i class="fa-solid fa-ear-listen"></i>
+                Temporal Lobe
+            </button>
+
+            <button onclick="showAnatomy('frontal')">
+                <i class="fa-solid fa-lightbulb"></i>
+                Frontal Lobe
+            </button>
+
+        </div>
+
+
+        <div class="anatomy-display">
+
+            <i id="anatomyIcon" class="fa-solid fa-brain"></i>
+
+            <h3 id="anatomyTitle">
+                Cerebrum
+            </h3>
+
+            <p id="anatomyDescription">
+                Responsible for higher cognitive functions including
+                reasoning, memory, sensory processing and voluntary
+                motor control.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <div>
+            🧠
+            <strong>
+                Neurosurgery Simulator
+            </strong>
+        </div>
+
+        <p>
+            Educational simulation only — not a substitute for clinical training.
+        </p>
+
+    </footer>
+
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
