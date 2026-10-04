@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeuroVenture: Advanced Neurosurgery & Clinical Atlas</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        medical: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            950: '#082f49'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-panel {
+            background: rgba(12, 74, 110, 0.35);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(56, 189, 248, 0.25);
+        }
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(14, 165, 233, 0.2); }
+            50% { box-shadow: 0 0 40px rgba(14, 165, 233, 0.5); }
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen selection:bg-cyan-500 selection:text-white">
+
+    <header class="sticky top-0 z-50 bg-slate-950/85 backdrop-blur-md border-b border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-600 to-blue-500 flex items-center justify-center shadow-lg shadow-cyan-500/30">
+                    <i class="fa-solid fa-brain text-white text-xl"></i>
+                </div>
+                <div>
+                    <span class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">NeuroVenture</span>
+                    <span class="block text-[10px] text-cyan-400/80 tracking-widest uppercase font-semibold">Surgical Anatomy & Clinical Atlas</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium">
+                <a href="#hero" class="text-slate-300 hover:text-cyan-400 transition-colors">Overview</a>
+                <a href="#anatomy" class="text-slate-300 hover:text-cyan-400 transition-colors">Brain Explorer</a>
+                <a href="#procedures" class="text-slate-300 hover:text-cyan-400 transition-colors">Procedures</a>
+                <a href="#quiz" class="text-slate-300 hover:text-cyan-400 transition-colors">Knowledge Quiz</a>
+            </nav>
+            <div>
+                <a href="#anatomy" class="px-4 py-2 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-medium text-xs sm:text-sm shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 transition-all">
+                    Explore Anatomy
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section id="hero" class="relative overflow-hidden pt-20 pb-28 lg:pt-32 lg:pb-36">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-900/30 via-slate-950 to-slate-950 -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-cyan-950/80 border border-cyan-800 text-cyan-400 text-xs font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                        <span>Advanced Neurosurgical Portal v2.5</span>
+                    </div>
+                    <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight text-white leading-tight">
+                        Precision Within the <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Human Brain</span>
+                    </h1>
+                    <p class="text-lg text-slate-300 max-w-2xl leading-relaxed">
+                        Immerse yourself in complex central nervous system architecture. Explore detailed functional neuroanatomy, high-risk surgical corridors, and pioneering clinical interventions.
+                    </p>
+                    <div class="flex flex-wrap gap-4 pt-2">
+                        <a href="#anatomy" class="px-6 py-3.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold shadow-lg shadow-cyan-500/25 transition-all flex items-center space-x-2 text-sm">
+                            <i class="fa-solid fa-compass-drafting"></i>
+                            <span>Launch Brain Explorer</span>
+                        </a>
+                        <a href="#procedures" class="px-6 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 border border-slate-700 font-semibold transition-all flex items-center space-x-2 text-sm">
+                            <i class="fa-solid fa-scalpel"></i>
+                            <span>View Procedures</span>
+                        </a>
+                    </div>
+                    <div class="grid grid-cols-3 gap-6 pt-6 border-t border-slate-800/80">
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-bold text-cyan-400">100B+</div>
+                            <div class="text-xs text-slate-400 mt-1">Neural Connections</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-bold text-blue-400">5 Core</div>
+                            <div class="text-xs text-slate-400 mt-1">Anatomical Regions</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl sm:text-3xl font-bold text-teal-400">20%</div>
+                            <div class="text-xs text-slate-400 mt-1">Cardiac Oxygen Output</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 relative">
+                    <div class="relative w-full aspect-square rounded-3xl glass-panel p-6 flex items-center justify-center shadow-2xl overflow-hidden border border-cyan-500/30 pulse-glow">
+                        <div class="absolute inset-0 bg-radial from-cyan-500/10 via-transparent to-transparent"></div>
+                        <div class="text-center relative z-10 space-y-4">
+                            <div class="w-36 h-36 mx-auto rounded-full bg-gradient-to-tr from-cyan-600/30 to-blue-500/30 flex items-center justify-center border border-cyan-400/40 shadow-2xl shadow-cyan-500/30">
+                                <i class="fa-solid fa-brain text-7xl text-cyan-300"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-white">Interactive Neurological Atlas</h3>
+                            <p class="text-xs text-slate-300 px-4">Select regions from the explorer below to inspect surgical pathways and functional pathology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="anatomy" class="py-24 bg-slate-900/50 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-cyan-400 text-xs font-bold uppercase tracking-widest px-3.5 py-1 bg-cyan-950/80 rounded-full border border-cyan-800">Interactive Atlas</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Brain Anatomy & Neurosurgical Explorer</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Click any neurological region below to reveal its primary functions, associated clinical pathologies, and precise surgical approaches.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+                <!-- Sidebar Region Buttons -->
+                <div class="lg:col-span-4 space-y-3" id="region-buttons-container">
+                    <!-- Injected via JS -->
+                </div>
+
+                <!-- Detail Display Card -->
+                <div class="lg:col-span-8 space-y-6">
+                    <div class="glass-panel rounded-3xl p-6 sm:p-10 relative overflow-hidden border border-cyan-500/40 shadow-2xl">
+                        <div class="absolute top-0 right-0 p-8 opacity-5 pointer-events-none">
+                            <i class="fa-solid fa-atom text-9xl text-cyan-400"></i>
+                        </div>
+                        <div class="flex items-center justify-between pb-6 border-b border-slate-800">
+                            <div>
+                                <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider" id="active-region-subtitle">Selected Region</span>
+                                <h3 class="text-2xl sm:text-3xl font-bold text-white mt-1" id="active-region-title">Cerebrum</h3>
+                            </div>
+                            <div class="w-14 h-14 rounded-2xl bg-cyan-500/20 flex items-center justify-center border border-cyan-500/40 text-cyan-400 text-2xl shadow-lg" id="active-region-icon">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6">
+                            <div class="space-y-2 bg-slate-950/50 p-5 rounded-2xl border border-slate-800/80">
+                                <h4 class="text-xs font-bold text-cyan-400 uppercase tracking-wider flex items-center space-x-2">
+                                    <i class="fa-solid fa-stethoscope"></i>
+                                    <span>Primary Functions</span>
+                                </h4>
+                                <p class="text-slate-300 text-sm leading-relaxed" id="active-region-functions">Loading...</p>
+                            </div>
+                            <div class="space-y-2 bg-slate-950/50 p-5 rounded-2xl border border-slate-800/80">
+                                <h4 class="text-xs font-bold text-rose-400 uppercase tracking-wider flex items-center space-x-2">
+                                    <i class="fa-solid fa-triangle-exclamation"></i>
+                                    <span>Associated Pathologies</span>
+                                </h4>
+                                <p class="text-slate-300 text-sm leading-relaxed" id="active-region-pathologies">Loading...</p>
+                            </div>
+                        </div>
+
+                        <div class="mt-6 space-y-2 bg-slate-950/50 p-5 rounded-2xl border border-slate-800/80">
+                            <h4 class="text-xs font-bold text-teal-400 uppercase tracking-wider flex items-center space-x-2">
+                                <i class="fa-solid fa-scalpel"></i>
+                                <span>Neurosurgical Approach & Considerations</span>
+                            </h4>
+                            <p class="text-slate-300 text-sm leading-relaxed" id="active-region-surgical">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="procedures" class="py-24 bg-slate-950 border-t border-slate-800/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-blue-400 text-xs font-bold uppercase tracking-widest px-3.5 py-1 bg-blue-950/80 rounded-full border border-blue-800">Surgical Interventions</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Common Neurosurgical Procedures</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Explore clinical indications, risk factors, and postoperative recovery protocols for leading neurosurgical operations.</p>
+            </div>
+
+            <!-- Procedure Category Tabs -->
+            <div class="flex flex-wrap justify-center gap-3 mb-10" id="procedure-tabs-container">
+                <!-- Injected via JS -->
+            </div>
+
+            <!-- Procedure Card Details -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 max-w-5xl mx-auto border border-blue-500/30 shadow-2xl">
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div class="lg:col-span-1 space-y-6">
+                        <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-blue-600 to-cyan-500 flex items-center justify-center text-white text-2xl shadow-lg shadow-blue-500/30" id="proc-icon">
+                            <i class="fa-solid fa-bone"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-2xl font-bold text-white" id="proc-title">Craniotomy</h3>
+                            <span class="text-xs font-semibold text-cyan-400 uppercase tracking-wider mt-1 block" id="proc-category">Skull & Brain Access</span>
+                        </div>
+                        <p class="text-slate-300 text-sm leading-relaxed" id="proc-description">Loading procedure description...</p>
+                    </div>
+                    <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 space-y-3">
+                            <h4 class="text-xs font-bold text-amber-400 uppercase tracking-wider flex items-center space-x-2">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                                <span>Risk Factors & Complications</span>
+                            </h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="proc-risks">
+                                <!-- Injected via JS -->
+                            </ul>
+                        </div>
+                        <div class="bg-slate-900/80 p-5 rounded-2xl border border-slate-800 space-y-3">
+                            <h4 class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center space-x-2">
+                                <i class="fa-solid fa-heart-pulse"></i>
+                                <span>Recovery Protocol</span>
+                            </h4>
+                            <ul class="space-y-2 text-sm text-slate-300" id="proc-recovery">
+                                <!-- Injected via JS -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quiz" class="py-24 bg-slate-900/50 border-t border-slate-800/80">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 space-y-4">
+                <span class="text-teal-400 text-xs font-bold uppercase tracking-widest px-3.5 py-1 bg-teal-950/80 rounded-full border border-teal-800">Knowledge Assessment</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Neurosurgery Mastery Quiz</h2>
+                <p class="text-slate-400 text-sm sm:text-base">Test your understanding of neuroanatomy, surgical approaches, and clinical pathologies.</p>
+            </div>
+
+            <!-- Quiz Card -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 border border-teal-500/40 relative shadow-2xl" id="quiz-card">
+                <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-800">
+                    <span class="text-xs font-semibold text-teal-400 uppercase tracking-wider" id="quiz-progress-text">Question 1 of 5</span>
+                    <span class="px-3.5 py-1 rounded-full bg-slate-900 border border-slate-700 text-slate-300 text-xs font-semibold" id="quiz-score-badge">Score: 0</span>
+                </div>
+
+                <div class="space-y-6">
+                    <h3 class="text-xl sm:text-2xl font-bold text-white" id="quiz-question">Loading question...</h3>
+                    <div class="grid grid-cols-1 gap-3.5" id="quiz-options">
+                        <!-- Options injected via JS -->
+                    </div>
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-slate-800 flex items-center justify-between hidden" id="quiz-footer">
+                    <p class="text-sm font-medium text-slate-300" id="quiz-feedback"></p>
+                    <button id="next-question-btn" class="px-6 py-2.5 rounded-xl bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-sm transition-all shadow-lg shadow-teal-500/20">
+                        Next Question <i class="fa-solid fa-arrow-right ml-1"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz Completed Screen -->
+            <div id="quiz-completed" class="glass-panel rounded-3xl p-10 text-center space-y-6 hidden border border-teal-500/40 shadow-2xl">
+                <div class="w-20 h-20 mx-auto rounded-full bg-teal-500/20 border border-teal-500/40 flex items-center justify-center text-teal-400 text-3xl shadow-lg">
+                    <i class="fa-solid fa-award"></i>
+                </div>
+                <h3 class="text-3xl font-bold text-white">Quiz Completed Successfully!</h3>
+                <p class="text-slate-300 text-lg" id="final-score-text">You scored 5 out of 5.</p>
+                <button onclick="restartQuiz()" class="px-8 py-3 rounded-xl bg-gradient-to-r from-teal-500 to-cyan-500 text-slate-950 font-bold text-sm shadow-lg shadow-teal-500/20 hover:opacity-90 transition-all">
+                    Restart Mastery Quiz
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 border-t border-slate-900 py-12 text-slate-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center space-x-3">
+                <div class="w-8 h-8 rounded-lg bg-cyan-600/20 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+                    <i class="fa-solid fa-brain"></i>
+                </div>
+                <span class="font-bold text-slate-300">NeuroVenture Surgical Atlas</span>
+            </div>
+            <p class="text-xs text-center sm:text-right">Educational reference tool designed for medical exploration. Always consult clinical professionals for health advice.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Brain Regions Data Store
+        const brainRegions = [
+            {
+                id: 'cerebrum',
+                name: 'Cerebrum',
+                subtitle: 'Higher Cognitive & Motor Center',
+                icon: 'fa-brain',
+                functions: 'Responsible for higher-level mental processes including abstract reasoning, emotional regulation, episodic memory, sensory perception, and voluntary motor control across dual hemispheres.',
+                pathologies: 'Glioblastoma multiforme, high-grade meningiomas, metastatic brain tumors, intractable epilepsy foci, and cortical stroke infarctions.',
+                surgical: 'Craniotomy with stereotactic neuronavigation, awake craniotomy for tumor resections near eloquent cortex, and fluorescence-guided microsurgery.'
+            },
+            {
+                id: 'cerebellum',
+                name: 'Cerebellum',
+                subtitle: 'Balance, Posture & Motor Coordination',
+                icon: 'fa-network-wired',
+                functions: 'Coordinates voluntary skeletal movements, maintains posture and spatial equilibrium, and modulates fine motor timing and unconscious muscle tone.',
+                pathologies: 'Medulloblastomas, cerebellar astrocytomas, Arnold-Chiari malformations, and cerebellar hemorrhages or ischemic strokes.',
+                surgical: 'Suboccipital craniectomy, posterior fossa exploration, and endoscopic third ventriculostomy (ETV) for obstructive hydrocephalus.'
+            },
+            {
+                id: 'brainstem',
+                name: 'Brainstem',
+                subtitle: 'Autonomic & Vital Life Support Control',
+                icon: 'fa-bolt',
+                functions: 'Regulates critical autonomic functions including respiration, heart rate, vascular tone, level of consciousness, and serves as the principal conduit for neural tracts.',
+                pathologies: 'Brainstem gliomas, cavernous malformations (cavernomas), vestibular schwannomas (acoustic neuromas), and brainstem stroke.',
+                surgical: 'Delicate skull base approaches (retrosigmoid, transcondylar), intraoperative neurophysiological monitoring (IONM), and stereotactic radiosurgery.'
+            },
+            {
+                id: 'temporal',
+                name: 'Temporal Lobe',
+                subtitle: 'Auditory, Memory & Limbic Processing',
+                icon: 'fa-ear-listen',
+                functions: 'Processes auditory signals, interprets language comprehension (Wernicke’s area), consolidates long-term declarative memories via the hippocampus, and modulates emotion via the amygdala.',
+                pathologies: 'Temporal lobe epilepsy, hippocampal sclerosis, low-grade astrocytomas, and middle cerebral artery aneurysms.',
+                surgical: 'Pterional craniotomy, selective amygdalohippocampectomy for medically refractory epilepsy, and microsurgical aneurysm clipping.'
+            },
+            {
+                id: 'frontal',
+                name: 'Frontal Lobe',
+                subtitle: 'Executive Function, Reasoning & Motor Execution',
+                icon: 'fa-lightbulb',
+                functions: 'Governs complex executive functions, working memory, impulse control, social conduct, voluntary motor execution (motor cortex), and expressive speech production (Broca’s area).',
+                pathologies: 'Frontal lobe meningiomas, low-grade gliomas, traumatic brain contusions, and anterior communicating artery aneurysms.',
+                surgical: 'Bifrontal or pterional craniotomy, awake brain mapping for language and motor preservation, and minimally invasive endoscopic tumor resection.'
+            }
+        ];
+
+        // Neurosurgical Procedures Data Store
+        const procedures = [
+            {
+                id: 'craniotomy',
+                name: 'Craniotomy',
+                category: 'Skull & Brain Access',
+                icon: 'fa-scalpel',
+                description: 'A surgical operation in which a bone flap is temporarily excised from the skull to access intracranial structures for tumor resection, aneurysm clipping, or hematoma evacuation.',
+                risks: ['Surgical site infection or osteomyelitis', 'Cerebrospinal fluid (CSF) leak', 'Postoperative seizures', 'Transient or permanent neurological deficit'],
+                recovery: ['1 to 2 weeks inpatient observation', '4 to 8 weeks gradual activity resumption', 'Follow-up neuroimaging MRI scans at 3 and 6 months']
+            },
+            {
+                id: 'dbs',
+                name: 'Deep Brain Stimulation (DBS)',
+                category: 'Functional Neurosurgery',
+                icon: 'fa-microchip',
+                description: 'Stereotactic implantation of neurostimulator electrodes into targeted deep brain nuclei (e.g., subthalamic nucleus) to deliver continuous electrical pulses managing movement disorders.',
+                risks: ['Intracranial hemorrhage along electrode trajectory', 'Hardware malfunction, fracture, or lead migration', 'Surgical site or device-related infection', 'Transient mood or speech fluency shifts'],
+                recovery: ['1-2 days hospital stay post-implantation', 'Outpatient programming and voltage titration over subsequent weeks', 'Long-term battery monitoring']
+            },
+            {
+                id: 'spinal_fusion',
+                name: 'Spinal Fusion',
+                category: 'Spinal Neurosurgery',
+                icon: 'fa-bone',
+                description: 'Surgical technique permanently joining two or more vertebrae using bone grafts and metallic instrumentation (rods and pedicle screws) to eliminate painful motion.',
+                risks: ['Adjacent segment spinal degeneration', 'Non-union or pseudarthrosis', 'Hardware prominence or irritation', 'Nerve root injury or incidental durotomy'],
+                recovery: ['2-4 days hospital stay', 'Physical therapy initiated within 2 weeks', 'Complete solid bone fusion achieved over 3 to 6 months']
+            },
+            {
+                id: 'aneurysm_clipping',
+                name: 'Aneurysm Clipping',
+                category: 'Vascular Neurosurgery',
+                icon: 'fa-heart-pulse',
+                description: 'An open microsurgical procedure where a microscopic titanium clip is placed across the neck of a cerebral aneurysm to isolate it from arterial blood circulation.',
+                risks: ['Cerebral vasospasm leading to ischemia', 'Incomplete clipping or aneurysm recurrence', 'Intraoperative rupture and hemorrhage', 'Postoperative cerebral edema'],
+                recovery: ['Neuro-ICU intensive monitoring for 48-72 hours', 'Total inpatient hospital stay of 5-10 days', 'Gradual return to normal duties after 6-12 weeks']
+            }
+        ];
+
+        // Knowledge Quiz Data Store
+        const quizData = [
+            {
+                question: "Which brain region is primarily responsible for balance, posture, and motor coordination?",
+                options: ["Cerebrum", "Cerebellum", "Brainstem", "Frontal Lobe"],
+                answer: 1
+            },
+            {
+                question: "What is the primary clinical objective of Deep Brain Stimulation (DBS)?",
+                options: [
+                    "To completely excise malignant glioblastoma tumors",
+                    "To deliver targeted electrical impulses to manage movement disorders like Parkinson's disease",
+                    "To decompress compressed spinal nerve roots",
+                    "To drain acute subdural intracranial hematomas"
+                ],
+                answer: 1
+            },
+            {
+                question: "Which neurosurgical approach is frequently utilized to access posterior fossa and brainstem pathologies?",
+                options: ["Suboccipital craniectomy / Retrosigmoid approach", "Carpal tunnel release", "Anterior cervical discectomy", "Ventriculoperitoneal shunt placement"],
+                answer: 0
+            },
+            {
+                question: "What is a major vascular risk factor associated with microsurgical cerebral aneurysm clipping?",
+                options: ["Bone density loss in cranial flap", "Cerebral vasospasm leading to delayed ischemic stroke", "Permanent aphasia in 100% of cases", "Complete sensory loss of lower limbs"],
+                answer: 1
+            },
+            {
+                question: "Which lobe of the brain houses Broca's area, essential for expressive speech production?",
+                options: ["Occipital lobe", "Parietal lobe", "Frontal lobe", "Temporal lobe"],
+                answer: 2
+            }
+        ];
+
+        let currentRegionId = 'cerebrum';
+        let currentProcedureId = 'craniotomy';
+        let currentQuizIndex = 0;
+        let score = 0;
+        let selectedAnswer = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            initAnatomyExplorer();
+            initProcedures();
+            initQuiz();
+        });
+
+        // Anatomy Explorer Controller
+        function initAnatomyExplorer() {
+            const container = document.getElementById('region-buttons-container');
+            container.innerHTML = brainRegions.map(reg => `
+                <button onclick="selectRegion('${reg.id}')" 
+                    class="w-full text-left p-4 rounded-2xl transition-all flex items-center justify-between border ${reg.id === currentRegionId ? 'bg-cyan-500/20 border-cyan-500 text-white shadow-lg shadow-cyan-500/10' : 'bg-slate-900/60 border-slate-800 text-slate-300 hover:bg-slate-900 hover:border-slate-700'}">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-10 h-10 rounded-xl bg-cyan-950/80 border border-cyan-800 flex items-center justify-center text-cyan-400">
+                            <i class="fa-solid ${reg.icon}"></i>
+                        </div>
+                        <div>
+                            <div class="font-bold text-sm">${reg.name}</div>
+                            <div class="text-xs text-slate-400">${reg.subtitle}</div>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-chevron-right text-xs text-slate-500"></i>
+                </button>
+            `).join('');
+
+            updateAnatomyDisplay();
+        }
+
+        function selectRegion(id) {
+            currentRegionId = id;
+            initAnatomyExplorer();
+        }
+
+        function updateAnatomyDisplay() {
+            const reg = brainRegions.find(r => r.id === currentRegionId);
+            if (!reg) return;
+            document.getElementById('active-region-title').innerText = reg.name;
+            document.getElementById('active-region-subtitle').innerText = reg.subtitle;
+            document.getElementById('active-region-icon').innerHTML = `<i class="fa-solid ${reg.icon}"></i>`;
+            document.getElementById('active-region-functions').innerText = reg.functions;
+            document.getElementById('active-region-pathologies').innerText = reg.pathologies;
+            document.getElementById('active-region-surgical').innerText = reg.surgical;
+        }
+
+        // Procedures Controller
+        function initProcedures() {
+            const tabsContainer = document.getElementById('procedure-tabs-container');
+            tabsContainer.innerHTML = procedures.map(proc => `
+                <button onclick="selectProcedure('${proc.id}')" 
+                    class="px-5 py-2.5 rounded-xl font-medium text-sm transition-all border ${proc.id === currentProcedureId ? 'bg-blue-600 border-blue-400 text-white shadow-lg shadow-blue-500/30' : 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800 hover:border-slate-700'}">
+                    ${proc.name}
+                </button>
+            `).join('');
+
+            updateProcedureDisplay();
+        }
+
+        function selectProcedure(id) {
+            currentProcedureId = id;
+            initProcedures();
+        }
+
+        function updateProcedureDisplay() {
+            const proc = procedures.find(p => p.id === currentProcedureId);
+            if (!proc) return;
+            document.getElementById('proc-title').innerText = proc.name;
+            document.getElementById('proc-category').innerText = proc.category;
+            document.getElementById('proc-icon').innerHTML = `<i class="fa-solid ${proc.icon}"></i>`;
+            document.getElementById('proc-description').innerText = proc.description;
+
+            document.getElementById('proc-risks').innerHTML = proc.risks.map(r => `
+                <li class="flex items-start space-x-2">
+                    <i class="fa-solid fa-circle-xmark text-rose-400 text-xs mt-1"></i>
+                    <span>${r}</span>
+                </li>
+            `).join('');
+
+            document.getElementById('proc-recovery').innerHTML = proc.recovery.map(rec => `
+                <li class="flex items-start space-x-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400 text-xs mt-1"></i>
+                    <span>${rec}</span>
+                </li>
+            `).join('');
+        }
+
+        // Quiz Controller
+        function initQuiz() {
+            currentQuizIndex = 0;
+            score = 0;
+            selectedAnswer = null;
+            document.getElementById('quiz-card').classList.remove('hidden');
+            document.getElementById('quiz-completed').classList.add('hidden');
+            loadQuizQuestion();
+        }
+
+        function loadQuizQuestion() {
+            const q = quizData[currentQuizIndex];
+            document.getElementById('quiz-progress-text').innerText = `Question ${currentQuizIndex + 1} of ${quizData.length}`;
+            document.getElementById('quiz-score-badge').innerText = `Score: ${score}`;
+            document.getElementById('quiz-question').innerText = q.question;
+            
+            const optionsContainer = document.getElementById('quiz-options');
+            optionsContainer.innerHTML = q.options.map((opt, idx) => `
+                <button onclick="handleAnswerSelection(${idx})" id="opt-${idx}" 
+                    class="w-full text-left p-4 rounded-xl bg-slate-950/60 border border-slate-800 text-slate-200 text-sm font-medium hover:bg-slate-900 transition-all flex items-center justify-between">
+                    <span>${opt}</span>
+                    <span class="w-6 h-6 rounded-full border border-slate-700 flex items-center justify-center text-xs text-slate-500" id="opt-icon-${idx}">${String.fromCharCode(65 + idx)}</span>
+                </button>
+            `).join('');
+
+            document.getElementById('quiz-footer').classList.add('hidden');
+            selectedAnswer = null;
+        }
+
+        function handleAnswerSelection(idx) {
+            if (selectedAnswer !== null) return;
+            selectedAnswer = idx;
+            const q = quizData[currentQuizIndex];
+            const isCorrect = (idx === q.answer);
+            if (isCorrect) score++;
+
+            q.options.forEach((_, i) => {
+                const btn = document.getElementById(`opt-${i}`);
+                btn.disabled = true;
+                if (i === q.answer) {
+                    btn.classList.add('bg-emerald-950/60', 'border-emerald-500', 'text-emerald-300');
+                } else if (i === idx && !isCorrect) {
+                    btn.classList.add('bg-rose-950/60', 'border-rose-500', 'text-rose-300');
+                } else {
+                    btn.classList.add('opacity-50');
+                }
+            });
+
+            const feedbackEl = document.getElementById('quiz-feedback');
+            feedbackEl.innerText = isCorrect ? "Correct! Excellent neurosurgical insight." : "Incorrect. Review the anatomical atlas for this topic.";
+            feedbackEl.className = `text-sm font-semibold ${isCorrect ? 'text-emerald-400' : 'text-rose-400'}`;
+            document.getElementById('quiz-footer').classList.remove('hidden');
+
+            const nextBtn = document.getElementById('next-question-btn');
+            if (currentQuizIndex === quizData.length - 1) {
+                nextBtn.innerHTML = `Complete Quiz <i class="fa-solid fa-flag-checkered ml-1"></i>`;
+                nextBtn.onclick = finishQuiz;
+            } else {
+                nextBtn.innerHTML = `Next Question <i class="fa-solid fa-arrow-right ml-1"></i>`;
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuizIndex++;
+            loadQuizQuestion();
+        }
+
+        function finishQuiz() {
+            document.getElementById('quiz-card').classList.add('hidden');
+            document.getElementById('quiz-completed').classList.remove('hidden');
+            document.getElementById('final-score-text').innerText = `You scored ${score} out of ${quizData.length} correct answers!`;
+        }
+
+        function restartQuiz() {
+            initQuiz();
+        }
+    </script>
+</body>
+</html>
